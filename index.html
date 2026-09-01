@@ -59,6 +59,150 @@
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ============ 成果展示 · 照片球体 [核心视觉] ============ */
+    /* 照片即球体：大量照片密集排列在3D球面上，匀速自转，无壳无晕 */
+    .showcase {
+        position: relative; overflow: hidden;
+        padding: 120px 48px; max-width: 1200px; margin: 80px auto 0;
+    }
+    /* 径向淡化背景层：球心5% → 球面20% → 1.5R 处0%，整体与珍珠白无缝融合 */
+    .showcase-bg-wrap {
+        position: absolute !important;
+        inset: 0;
+        z-index: 0 !important;
+        pointer-events: none;
+        /* 上下 + 左右双向线性淡化：四个方向边缘平滑过渡 */
+        -webkit-mask-image:
+            linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%),
+            linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%),
+            linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        mask-composite: intersect;
+    }
+    .showcase-bg {
+        position: absolute !important;
+        inset: 0;
+        background-image: url('834.194.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        pointer-events: none;
+    }
+    .showcase-head {
+        position: relative; z-index: 2;
+        display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+        margin-bottom: 72px;
+    }
+    .showcase-head-num { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em; color: var(--mist); margin-bottom: 10px; }
+    .showcase-head-title {
+        font-family: var(--font-serif);
+        font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 600; line-height: 1.0;
+        letter-spacing: -0.03em; color: var(--ink);
+        display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    }
+    .showcase-head-title-en {
+        font-family: var(--font-sans); font-size: 0.76rem; font-weight: 400;
+        letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-mute);
+    }
+    .showcase-head-meta {
+        font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--deep-sea); margin-bottom: 6px;
+    }
+    .showcase-head-meta::before { content: '— '; }
+
+    /* 球体舞台 */
+    .showcase-stage {
+        position: relative; z-index: 2;
+        display: flex; flex-direction: column; align-items: center;
+        padding: 40px 0 80px;
+    }
+    .orb-viewport {
+        perspective: 800px;                      /* 强透视，边缘卡片明显倾斜 */
+        width: 100%; display: flex; justify-content: center;
+        cursor: grab; user-select: none; -webkit-user-select: none;
+        touch-action: none;
+    }
+    .orb-viewport:active { cursor: grabbing; }
+    .orb-sphere {
+        position: relative;
+        width: 680px; height: 680px;            /* 更大球体 */
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
+    /* 照片卡片：位置由 --pos 控制，放大由 --s 控制，二者解耦 */
+    .orb-tile {
+        position: absolute;
+        left: 50%; top: 50%;
+        width: 68px; height: 86px;              /* 更小卡片 → 更密集 */
+        margin: -43px 0 0 -34px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(10, 37, 64, 0.10);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: var(--pos, none) scale(var(--s, 1));
+        transform-origin: center center;
+        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease;
+        background: var(--pearl);
+        cursor: pointer;
+    }
+    .orb-tile img {
+        width: 100%; height: 100%;
+        object-fit: cover; display: block;
+        pointer-events: none;
+    }
+    .orb-tile.focus {
+        --s: 1.18;                              /* 焦点更突出 */
+        box-shadow: 0 8px 24px rgba(10, 37, 64, 0.28);
+        z-index: 10;
+    }
+    /* 正下方实时标题（≤14px，var(--text-mute)） */
+    .orb-caption {
+        margin-top: 36px;
+        font-family: var(--font-sans);
+        font-size: 0.875rem; letter-spacing: 0.08em;
+        color: var(--text-mute); text-align: center;
+        min-height: 1.4em;
+        transition: opacity 0.4s ease;
+    }
+    @media (max-width: 768px) {
+        .showcase { padding: 80px 20px; margin: 48px auto 0; }
+        .showcase-head { margin-bottom: 48px; }
+        .orb-sphere { width: 360px; height: 360px; }
+        .orb-tile { width: 44px; height: 56px; margin: -28px 0 0 -22px; border-radius: 6px; }
+        .orb-caption { margin-top: 24px; font-size: 0.78rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .orb-tile { transition: none; }
+    }
+
+    /* 大图预览（点击飞出） */
+    .orb-lightbox {
+        position: fixed; inset: 0; z-index: 200;
+        background: rgba(10, 37, 64, 0.92);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.6s ease-out;
+        cursor: zoom-out;
+    }
+    .orb-lightbox.open { opacity: 1; pointer-events: auto; }
+    .orb-lightbox img {
+        max-width: 86vw; max-height: 82vh; object-fit: contain;
+        border-radius: 4px;
+        transform: scale(0.95);
+        transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .orb-lightbox.open img { transform: scale(1); }
+    .orb-lightbox-close {
+        position: fixed; top: 24px; right: 32px;
+        font-size: 1.8rem; color: var(--pearl); line-height: 1;
+        cursor: pointer; opacity: 0.7; transition: opacity 0.3s;
+    }
+    .orb-lightbox-close:hover { opacity: 1; }
+
     /* ============ 导航 ============ */
     .nav {
         position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -2868,6 +3012,7 @@
         <a href="#edu">教育</a>
         <a href="#cert">证书</a>
         <a href="#skills">技能</a>
+        <a href="#showcase">成果</a>
         <a href="#int">兴趣</a>
         <a href="#plan">计划</a>
     </div>
@@ -3285,6 +3430,30 @@
         <div class="skill-groups" id="skillGroups"></div>
     </div>
 </section>
+
+<!-- 成果展示 · 照片球体 -->
+<section class="section showcase" id="showcase">
+    <div class="showcase-bg-wrap" aria-hidden="true"><div class="showcase-bg" id="showcaseBg"></div></div>
+    <div class="showcase-head">
+        <div class="showcase-head-left">
+            <div class="showcase-head-num">— 005</div>
+            <h2 class="showcase-head-title">成果展示 <span class="showcase-head-title-en">/ SHOWCASE</span></h2>
+        </div>
+        <div class="showcase-head-meta">ORB</div>
+    </div>
+    <div class="showcase-stage" id="showcaseStage">
+        <div class="orb-viewport" id="orbViewport">
+            <div class="orb-sphere" id="orbSphere"></div>
+        </div>
+        <div class="orb-caption" id="orbCaption"></div>
+    </div>
+</section>
+
+<!-- 灯球大图预览 -->
+<div class="orb-lightbox" id="orbLightbox" aria-hidden="true">
+    <span class="orb-lightbox-close" id="orbLightboxClose" aria-hidden="true">×</span>
+    <img id="orbLightboxImg" src="" alt="成果大图" />
+</div>
 
 <!-- 兴趣 -->
 <section class="section" id="int">
@@ -4383,6 +4552,230 @@
             });
         }, { threshold: 0.15 });
         projObs.observe(document.getElementById('exp'));
+    })();
+
+    /* ============================================================
+     * 成果展示 · 照片球体
+     * 斐波那契黄金角球面分布 / 匀速自转 / hover减速 / 拖拽 / 焦点放大
+     * ============================================================ */
+    (function initShowcase() {
+        const sphere = document.getElementById('orbSphere');
+        const viewport = document.getElementById('orbViewport');
+        const caption = document.getElementById('orbCaption');
+        const stage = document.getElementById('showcaseStage');
+        const section = document.getElementById('showcase');
+        const bg = document.getElementById('showcaseBg');
+        const lightbox = document.getElementById('orbLightbox');
+        const lbImg = document.getElementById('orbLightboxImg');
+        const lbClose = document.getElementById('orbLightboxClose');
+        if (!sphere || !bg) return;
+
+        /* 动态计算球心位置，用径向 mask-image（内层）实现球内淡化 */
+        function positionBg() {
+            const sphereRect = sphere.getBoundingClientRect();
+            const sectionRect = section.getBoundingClientRect();
+            const cx = sectionRect.width / 2;
+            const cy = sphereRect.top + sphere.offsetHeight / 2 - sectionRect.top;
+            const R = sphere.offsetWidth / 2;
+            const farEdge = Math.max(cx, sectionRect.width - cx, cy, sectionRect.height - cy);
+            const cxPct = (cx / sectionRect.width) * 100;
+            const cyPct = (cy / sectionRect.height) * 100;
+            const rPct = (R / farEdge) * 100;
+            const r20Pct = (R * 2.0 / farEdge) * 100;
+            /* 内层径向淡化：正中心 15% → 球面 35% → 2R 处 0%
+               中心淡化避免违和，球面附近清晰一点展现内容层次，外围平滑淡出 */
+            const radialMask =
+                'radial-gradient(circle at ' + cxPct + '% ' + cyPct + '%, ' +
+                'rgba(0,0,0,0.15) 0%, ' +
+                'rgba(0,0,0,0.35) ' + rPct + '%, ' +
+                'transparent ' + Math.min(r20Pct, 100) + '%)';
+            bg.style.webkitMaskImage = radialMask;
+            bg.style.maskImage = radialMask;
+        }
+        positionBg();
+        window.addEventListener('resize', positionBg);
+        window.addEventListener('load', positionBg);
+        requestAnimationFrame(positionBg);
+
+        /* 成果照片池（循环复用到 N 张，确保球面密度足够） */
+        const basePhotos = [
+            { src: '成果素材1.png', title: '网站视觉系统' },
+            { src: '成果素材2.png', title: '工程成果汇编' },
+            { src: 'project-1.png', title: '准大一物品备忘录' },
+            { src: 'project-2.png', title: '科幻东方STG' },
+            { src: 'photo-1.jpg', title: '摄影 · 01' },
+            { src: 'photo-2.jpg', title: '摄影 · 02' },
+            { src: 'photo-3.jpg', title: '摄影 · 03' },
+            { src: 'photo-4.jpg', title: '摄影 · 04' },
+            { src: 'photo-5.jpg', title: '摄影 · 05' },
+            { src: 'photo-6.jpg', title: '摄影 · 06' },
+            { src: '配图1.jpg', title: '设计配图 01' },
+            { src: '配图2.jpg', title: '设计配图 02' },
+            { src: '配图3.jpg', title: '设计配图 03' },
+            { src: '配图4.jpg', title: '设计配图 04' },
+            { src: '配图5.jpg', title: '设计配图 05' },
+            { src: '配图6.jpg', title: '设计配图 06' },
+            { src: 'adapt.jpg', title: '音乐编曲' },
+            { src: '滑冰.jpg', title: '花样滑冰' },
+            { src: 'work-AI.jpg', title: 'AI 训练实践' },
+            { src: 'senior.jpg', title: '团队协作' },
+            { src: 'avatar.jpg', title: '个人形象' }
+        ];
+        const N = 60;
+        const photos = [];
+        for (let i = 0; i < N; i++) photos.push(basePhotos[i % basePhotos.length]);
+
+        /* 球体半径：与容器尺寸匹配（容器680→R≈340；移动360→R≈185） */
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const R = isMobile ? 185 : 340;
+        const phi = Math.PI * (3 - Math.sqrt(5));   /* 黄金角 */
+
+        /* 生成照片 + 斐波那契球面分布 */
+        const tiles = [];
+        photos.forEach((p, i) => {
+            const tile = document.createElement('div');
+            tile.className = 'orb-tile';
+            tile.innerHTML = '<img src="' + p.src + '" alt="' + p.title + '" loading="lazy" decoding="async" />';
+            tile.dataset.title = p.title;
+            tile.dataset.src = p.src;
+            const y = 1 - (i / (N - 1)) * 2;          /* y: 1 → -1 */
+            const r = Math.sqrt(1 - y * y);
+            const theta = phi * i;
+            const lat = Math.asin(y) * 180 / Math.PI; /* 纬度 */
+            const lon = (theta * 180 / Math.PI) % 360;/* 经度 */
+            /* rotateY(经度) rotateX(纬度) translateZ(R) → 照片法线朝外 */
+            tile.style.setProperty('--pos',
+                'rotateY(' + lon.toFixed(2) + 'deg) rotateX(' + lat.toFixed(2) + 'deg) translateZ(' + R + 'px)');
+            tile.dataset.lon = lon;
+            tile.dataset.lat = lat;
+            sphere.appendChild(tile);
+            tiles.push(tile);
+            /* 点击飞出大图 */
+            tile.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openLightbox(p.src, p.title);
+            });
+            /* hover 减速至停止（仅卡片触发） */
+            tile.addEventListener('mouseenter', () => { hovering = true; });
+            tile.addEventListener('mouseleave', () => { hovering = false; });
+        });
+
+        /* 旋转状态：匀速自转 ≈ 75秒/圈 */
+        let rotY = 0, rotX = -10;          /* 初始轻微俯视，可见上下半球 */
+        let velY = 0.08;                   /* 度/帧 */
+        const autoSpeed = 0.08;
+        let dragging = false, lastX = 0, lastY = 0;
+        let hovering = false;
+        let raf = null, inView = false;
+        const DEG = Math.PI / 180;
+
+        function applyTransform() {
+            sphere.style.transform =
+                'rotateX(' + rotX.toFixed(2) + 'deg) rotateY(' + rotY.toFixed(2) + 'deg)';
+        }
+
+        /* 焦点检测：计算每张照片旋转后的法线 z 分量，最大者为正对相机 */
+        function updateFocus() {
+            const cosRX = Math.cos(rotX * DEG), sinRX = Math.sin(rotX * DEG);
+            const cosRY = Math.cos(rotY * DEG), sinRY = Math.sin(rotY * DEG);
+            let best = null, bestZ = -2;
+            for (let i = 0; i < tiles.length; i++) {
+                const t = tiles[i];
+                const lon = parseFloat(t.dataset.lon);
+                const lat = parseFloat(t.dataset.lat);
+                /* 初始朝外法线 */
+                const nx0 = Math.cos(lat * DEG) * Math.sin(lon * DEG);
+                const ny0 = Math.sin(lat * DEG);
+                const nz0 = Math.cos(lat * DEG) * Math.cos(lon * DEG);
+                /* 经 rotateY(rotY) */
+                const z1 = -nx0 * sinRY + nz0 * cosRY;
+                const y1 = ny0;
+                /* 经 rotateX(rotX) */
+                const z2 = y1 * sinRX + z1 * cosRX;
+                if (z2 > bestZ) { bestZ = z2; best = t; }
+            }
+            for (let i = 0; i < tiles.length; i++) {
+                tiles[i].classList.toggle('focus', tiles[i] === best);
+            }
+            if (best) caption.textContent = best.dataset.title;
+        }
+
+        function tick() {
+            if (!inView) { raf = null; return; }
+            if (!dragging) {
+                const target = hovering ? 0 : autoSpeed;
+                velY += (target - velY) * (hovering ? 0.08 : 0.015);
+            }
+            rotY = (rotY + velY + 360) % 360;
+            applyTransform();
+            updateFocus();
+            raf = requestAnimationFrame(tick);
+        }
+        function start() { if (!raf) raf = requestAnimationFrame(tick); }
+        function stop() { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+
+        /* hover 减速逻辑已移至 tile 级别的事件监听中 */
+
+        /* 拖拽手动旋转（灵敏度低，松开惯性恢复） */
+        viewport.addEventListener('mousedown', (e) => {
+            dragging = true; lastX = e.clientX; lastY = e.clientY; velY = 0;
+        });
+        window.addEventListener('mousemove', (e) => {
+            if (!dragging) return;
+            const dx = e.clientX - lastX, dy = e.clientY - lastY;
+            rotY = (rotY + dx * 0.1 + 360) % 360;
+            rotX = Math.max(-60, Math.min(60, rotX - dy * 0.07));
+            velY = dx * 0.1;
+            lastX = e.clientX; lastY = e.clientY;
+        });
+        window.addEventListener('mouseup', () => { dragging = false; });
+
+        /* 触摸支持 */
+        viewport.addEventListener('touchstart', (e) => {
+            dragging = true; hovering = true;
+            lastX = e.touches[0].clientX; lastY = e.touches[0].clientY; velY = 0;
+        }, { passive: true });
+        viewport.addEventListener('touchmove', (e) => {
+            if (!dragging) return;
+            const dx = e.touches[0].clientX - lastX, dy = e.touches[0].clientY - lastY;
+            rotY = (rotY + dx * 0.1 + 360) % 360;
+            rotX = Math.max(-60, Math.min(60, rotX - dy * 0.07));
+            velY = dx * 0.1;
+            lastX = e.touches[0].clientX; lastY = e.touches[0].clientY;
+        }, { passive: true });
+        viewport.addEventListener('touchend', () => { dragging = false; hovering = false; });
+
+        /* 大图预览 */
+        function openLightbox(src, title) {
+            lbImg.src = src; lbImg.alt = title;
+            lightbox.classList.add('open');
+            stop();
+        }
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            start();
+        }
+        lbClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+        });
+
+        /* 视口内才旋转（离开暂停以节省资源） */
+        if ('IntersectionObserver' in window) {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    inView = e.isIntersecting;
+                    if (inView) start(); else stop();
+                });
+            }, { threshold: 0.15 });
+            obs.observe(stage);
+        } else {
+            inView = true; start();
+        }
+
+        applyTransform();
+        updateFocus();
     })();
 </script>
 
