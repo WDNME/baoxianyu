@@ -2636,6 +2636,17 @@
         /* —— 教育：单栏，校徽居中 —— */
         .edu-card { grid-template-columns: 1fr; text-align: center; }
         .edu-logo { width: 200px; margin: 0 auto; }
+        /* 手机端确保主校徽完整显示，不受懒加载或容器尺寸影响 */
+        .edu-col-logo-stage { min-height: 200px; }
+        .edu-logo { height: auto; aspect-ratio: 1 / 1; overflow: hidden; }
+        .edu-logo > img {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain !important;
+        }
         .edu-info { flex-direction: column; gap: 20px; }
         .edu-text { padding-left: 0; width: 100%; }
 
@@ -3325,7 +3336,7 @@
         <!-- 中栏：3D 校徽展台 -->
         <div class="edu-col-logo-stage">
             <div class="edu-logo" title="西南财经大学校徽">
-                <img src="swufe-logo.png" alt="西南财经大学校徽" loading="lazy" decoding="async" />
+                <img src="swufe-logo.png" alt="西南财经大学校徽" loading="eager" decoding="async" />
             </div>
             <div class="edu-logo-reflect" aria-hidden="true">
                 <div class="edu-logo-reflect-inner">
