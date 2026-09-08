@@ -2504,6 +2504,18 @@
     iconify-icon { display: inline-flex; align-items: center; justify-content: center; vertical-align: middle; }
     img { display: block; max-width: 100%; }
 
+    /* 触摸设备不保留悬停位移，避免点击后卡在 hover 状态 */
+    @media (hover: none) and (pointer: coarse) {
+        .nav-links a:hover,
+        .tag:hover,
+        .plan-item:hover,
+        .interest-card:hover,
+        .pers-card-3d:hover,
+        .proj-img-wrap:hover .proj-img-circle,
+        .edu-logo:hover { transform: none !important; box-shadow: none; }
+        .exp-list:hover > li:not(:hover) { opacity: 1; }
+    }
+
     /* ============================================================
      * 响应式补全（新增，不动桌面端原始样式）
      * 断点：平板 768-1024px / 移动 <768px
@@ -2528,12 +2540,39 @@
 
     /* ===== 断点 1：平板端 768-1024px ===== */
     @media (max-width: 1024px) {
-        /* 首页左右分栏保持，但视觉块宽度收窄 */
-        .hero-content { gap: 32px; }
+        /* 平板端优先纵向阅读，避免首屏两栏挤压 */
+        .nav { padding: 0 24px; }
+        .nav-toggle { display: inline-flex; }
+        .nav-links {
+            display: none;
+            position: absolute; top: 100%; left: 0; right: 0;
+            flex-direction: column; gap: 0;
+            background: var(--pearl); border-top: 1px solid var(--line);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+            padding: 8px 0;
+        }
+        .nav-links.open { display: flex; }
+        .nav-links a { padding: 12px 24px; border-bottom: 1px solid var(--line); }
+        .nav-links a:last-child { border-bottom: none; }
+        .hero { padding: 104px 6vw 64px; }
+        .hero-content { grid-template-columns: 1fr; gap: 40px; max-width: 760px; }
+        .hero-text { max-width: 100%; }
+        .hero-visual { height: 420px; width: 100%; margin: 0; }
+        .visual-frame { width: min(100%, 620px); transform: none; margin: 0 auto; }
         /* 技能左右栏比例调整 */
-        .skills-grid { grid-template-columns: 40% 60%; gap: 24px; }
+        .skills-grid { grid-template-columns: 1fr; gap: 24px; }
         /* 兴趣三列 → 两列 */
         .interests-grid { grid-template-columns: repeat(2, 1fr); }
+        .exp-body, .proj-body { grid-template-columns: 1fr; gap: 18px; }
+        .exp-meta-col, .proj-meta-col { text-align: left; padding: 0; }
+        .exp-meta-col::before, .proj-meta-col::before { display: none; }
+        .exp-content-col, .proj-content-col { padding-left: 0; }
+        .proj-layout { grid-template-columns: 1fr; gap: 20px; }
+        .proj-img-wrap { align-self: center; justify-self: center; align-items: center; }
+        .cert-info-panel { padding: 6vw; }
+        .cert-spiral-stage { min-width: 0; overflow: hidden; }
+        .edu-card { grid-template-columns: 1fr; gap: 28px; }
+        .edu-col-period { text-align: left; }
         /* 证书螺旋半径稍缩 */
         #certStage { transform: scale(0.92); transform-origin: center top; }
     }
@@ -2558,6 +2597,12 @@
         /* —— 首页：视觉块取消 3D 倾斜 —— */
         .visual-frame { transform: none !important; }
         .hero-visual { width: 100%; margin: 0 0 16px; }
+        .hero-title { font-size: clamp(2.8rem, 13vw, 5rem); overflow-wrap: anywhere; }
+        .hero-sub { max-width: none; font-size: 0.94rem; }
+        .hero-contact { max-width: 100%; flex-wrap: wrap; }
+        .hero-email { min-width: 0; overflow-wrap: anywhere; }
+        .hero-email-copy { flex: 0 0 auto; }
+        .hero-visual { height: min(78vw, 360px); }
 
         /* —— 性格：3D 卡片降级平面 —— */
         .pers-card { transform: none !important; }
@@ -2591,6 +2636,8 @@
         /* —— 教育：单栏，校徽居中 —— */
         .edu-card { grid-template-columns: 1fr; text-align: center; }
         .edu-logo { width: 200px; margin: 0 auto; }
+        .edu-info { flex-direction: column; gap: 20px; }
+        .edu-text { padding-left: 0; width: 100%; }
 
         /* —— 经历/计划：时间轴细线隐藏，编号标题上下排列 —— */
         .exp-card { grid-template-columns: 1fr; }
@@ -2606,6 +2653,14 @@
 
         /* —— 通用 padding —— */
         .section { padding: 64px 16px; }
+        .section-header, .exp-header-wrap, .edu-head, .pers-header, .showcase-head { gap: 16px; flex-wrap: wrap; }
+        .section-title, .exp-title-main, .edu-head-title { font-size: clamp(2rem, 10vw, 3.4rem); }
+        .section-title-group, .exp-title-main, .edu-head-left { min-width: 0; flex-wrap: wrap; }
+        .exp-list > li { padding: 18px 0; font-size: 0.92rem; line-height: 1.85; }
+        .exp-content-col, .proj-content-col { min-width: 0; }
+        .proj-img-circle { max-width: 70vw; max-height: 70vw; width: min(200px, 70vw) !important; height: min(200px, 70vw) !important; }
+        .tag, .edu-course-tag, .cert-detail-tag { max-width: 100%; overflow-wrap: anywhere; }
+        table { display: block; max-width: 100%; overflow-x: auto; }
         .stats { padding: 48px 16px; }
         .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 24px; }
 
