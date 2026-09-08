@@ -497,35 +497,6 @@
     .exp-list > li:hover::before { background: var(--deep-sea); transform: scaleY(1.3); }
     .exp-list:hover > li:not(:hover) { opacity: 0.6; }
 
-    /* 数据标签块 */
-    .num-tag {
-        display: inline-block; padding: 2px 8px; margin: 0 2px;
-        background: var(--deep-sea); color: var(--pearl);
-        border-radius: 4px; font-size: 0.85em; font-weight: 500;
-        font-family: var(--font-mono);
-        transform: scale(0.8); opacity: 0;
-        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
-    }
-    .num-tag.in { transform: scale(1); opacity: 1; }
-
-    /* 百分比进度条可视化 */
-    .progress-inline {
-        display: inline-flex; align-items: center; gap: 10px;
-        vertical-align: middle; margin: 0 4px;
-    }
-    .progress-bar-track {
-        display: inline-block; width: 80px; height: 8px;
-        background: var(--line); border-radius: 4px; overflow: hidden;
-        position: relative;
-    }
-    .progress-bar-fill {
-        position: absolute; left: 0; top: 0; height: 100%;
-        width: 78%; background: var(--deep-sea);
-        transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .progress-bar-fill.grow { width: 99%; }
-    .progress-labels { font-family: var(--font-mono); font-size: 0.82em; color: var(--text-mute); }
-
     /* 装饰圆环 */
     .exp-deco-ring {
         position: absolute; right: -100px; bottom: -100px;
@@ -551,9 +522,7 @@
 
     @media (prefers-reduced-motion: reduce) {
         .exp-anim, .exp-anim-left { opacity: 1 !important; transform: none !important; transition: none !important; }
-        .num-tag { transform: scale(1) !important; opacity: 1 !important; transition: none !important; }
         .exp-deco-ring { animation: none !important; }
-        .progress-bar-fill { width: 99% !important; transition: none !important; }
     }
 
     /* ============ 项目实践（新增） ============ */
@@ -3140,22 +3109,16 @@
             <h3 class="exp-title exp-anim exp-anim-title">电教管理员 &amp; 生物课代表</h3>
             <ul class="exp-list" id="expList">
                 <li class="exp-anim exp-li-1">
-                    <span>提议并领导 AI+教育模式，制作生物复习笔记 <span class="num-tag" data-count="32">0</span> 份，下载超 <span class="num-tag" data-count="1800" data-suffix=" 次">0</span></span>
+                    <span>参与 AI 与教育内容的探索，整理生物学习资料，并尝试使用 AI 辅助学习和内容创作。</span>
                 </li>
                 <li class="exp-anim exp-li-2">
-                    <span>负责多媒体设备运维，累计解决故障 <span class="num-tag" data-count="47" data-suffix=" 次">0</span>，保障 <span class="num-tag" data-count="100" data-suffix="+">0</span> 课堂零中断</span>
+                    <span>负责校园多媒体设备的日常维护，及时处理课堂和活动中的设备问题。</span>
                 </li>
                 <li class="exp-anim exp-li-3">
-                    <span>优化作业流程，提交率从
-                        <span class="progress-inline">
-                            <span class="progress-bar-track"><span class="progress-bar-fill"></span></span>
-                            <span class="progress-labels">78% → 99%</span>
-                        </span>
-                        ，推广至 <span class="num-tag" data-count="6" data-suffix=" 个班级">0</span>
-                    </span>
+                    <span>协助优化班级作业流程，关注同学的使用体验和实际反馈。</span>
                 </li>
                 <li class="exp-anim exp-li-4">
-                    <span>独立完成开学典礼、百日誓师等 <span class="num-tag" data-count="25" data-suffix=" 套">0</span> PPT，受校领导及 <span class="num-tag" data-count="300" data-suffix="+ 家长">0</span> 好评</span>
+                    <span>参与开学典礼、百日誓师等校园活动的 PPT 制作与现场支持。</span>
                 </li>
             </ul>
         </div>
@@ -3219,7 +3182,7 @@
             <div class="proj-layout">
                 <div>
                     <ul class="exp-list">
-                        <li class="proj-anim proj-li-2-1"><span>结合 AI 工具制作生物复习笔记 32 份，累计下载量超 1800 次</span></li>
+                        <li class="proj-anim proj-li-2-1"><span>制作并分享生物复习笔记，尝试用 AI 提升内容整理效率</span></li>
                         <li class="proj-anim proj-li-2-2"><span>作为阿里云认证高级 AI 训练师，实践大模型微调、提示词工程与自动化内容生产</span></li>
                         <li class="proj-anim proj-li-2-3"><span>探索 AI 在教育场景中的落地应用</span></li>
                     </ul>
@@ -3248,9 +3211,9 @@
         <div class="proj-content-col">
             <h3 class="exp-title proj-anim proj-anim-title-3">校园活动视觉设计</h3>
             <ul class="exp-list">
-                <li class="proj-anim proj-li-3-1"><span>独立完成开学典礼、百日誓师等 25 套 PPT 设计，受校领导及 300+ 家长好评</span></li>
-                <li class="proj-anim proj-li-3-2"><span>负责多媒体设备运维，累计解决故障 47 次，保障 100+ 课堂零中断</span></li>
-                <li class="proj-anim proj-li-3-3"><span>优化作业流程，使提交率从 78% 提升至 99%，推广至 6 个班级</span></li>
+                <li class="proj-anim proj-li-3-1"><span>参与校园活动 PPT 设计，并负责部分现场视觉支持</span></li>
+                <li class="proj-anim proj-li-3-2"><span>负责多媒体设备维护，及时处理课堂中的设备问题</span></li>
+                <li class="proj-anim proj-li-3-3"><span>协助优化作业流程，并根据实际反馈持续调整</span></li>
             </ul>
             <div class="proj-tags proj-anim proj-li-3-4">
                 <span class="tag">PPT 设计</span>
@@ -4489,26 +4452,6 @@
                         const li = document.querySelector('.' + cls);
                         if (!li) return;
                         setTimeout(() => li.classList.add('in'), 250 + (idx - 1) * 120);
-                        // 数据标签缩放弹出（列表项入场后 200ms）
-                        setTimeout(() => {
-                            li.querySelectorAll('.num-tag').forEach((tag, j) => {
-                                setTimeout(() => {
-                                    tag.classList.add('in');
-                                    // 计数动画
-                                    const target = parseInt(tag.dataset.count);
-                                    const suffix = tag.dataset.suffix || '';
-                                    let cur = 0; const step = Math.max(1, Math.floor(target / 40));
-                                    const itv = setInterval(() => {
-                                        cur += step;
-                                        if (cur >= target) { cur = target; clearInterval(itv); }
-                                        tag.textContent = cur + suffix;
-                                    }, 25);
-                                }, j * 60);
-                            });
-                            // 百分比进度条
-                            const pb = li.querySelector('.progress-bar-fill');
-                            if (pb) setTimeout(() => pb.classList.add('grow'), 100);
-                        }, 200);
                     });
                     expObs.unobserve(entry.target);
                 }
@@ -4517,15 +4460,8 @@
         const expSec = document.getElementById('exp');
         if (expSec) expObs.observe(expSec);
     } else {
-        // reduced motion：直接显示+跳过计数动画
+        // reduced motion：直接显示
         document.querySelectorAll('.exp-anim, .exp-anim-left').forEach(el => el.classList.add('in'));
-        document.querySelectorAll('.num-tag').forEach(tag => {
-            const target = tag.dataset.count;
-            const suffix = tag.dataset.suffix || '';
-            tag.textContent = target + suffix;
-            tag.classList.add('in');
-        });
-        document.querySelectorAll('.progress-bar-fill').forEach(pb => pb.classList.add('grow'));
         document.querySelectorAll('.proj-anim, .proj-anim-left').forEach(el => el.classList.add('in'));
     }
 
