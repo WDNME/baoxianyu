@@ -11,12 +11,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>鲍宪宇 | 阿里云认证高级AI训练师 · PPT演示设计专家</title>
-<meta name="description" content="鲍宪宇，阿里云认证高级AI训练师、PPT演示设计专家、AI应用实践者。专注大模型微调、提示词工程、RAG应用开发与信息可视化。">
+<title>鲍宪宇 | AI 应用实践 · 独立开发 · 科研学习</title>
+<meta name="description" content="鲍宪宇，西南财经大学 2026 级计算机类本科生、阿里云认证高级 AI 训练师。关注可信人工智能，正在精读证据深度学习论文并计划基于 PyTorch 复现；独立完成微信小程序开发与上线，目前正在准备 RST 竞赛。">
 <meta name="keywords" content="鲍宪宇,AI训练师,阿里云认证,PPT设计,大模型微调,西南财经大学,深圳科学高中">
 <meta name="author" content="鲍宪宇">
 <meta property="og:title" content="鲍宪宇 · 个人简历">
-<meta property="og:description" content="阿里云认证高级AI训练师 · PPT演示设计专家 · AI应用实践者">
+<meta property="og:description" content="微信小程序独立开发与上线 · 科研组会与论文阅读 · RST 竞赛备赛">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +55,7 @@
         background-image: radial-gradient(circle, rgba(10,37,64,0.035) 1px, transparent 1px);
         background-size: 24px 24px;
     }
+
     /* HSM 入场动画 */
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -3028,10 +3029,149 @@
     }
 
 
+    /* 近期实践：简历式项目叙述与流程展示 */
+    .current-links { display: flex; flex-wrap: wrap; gap: 12px 20px; margin-top: 22px; max-width: 560px; }
+    .current-links a { display: inline-flex; align-items: center; gap: 7px; color: var(--text-soft); font-size: 0.75rem; text-decoration: none; padding: 4px 0; border-bottom: 1px solid var(--line-strong); }
+    .current-links a:hover { color: var(--deep-sea); border-bottom-color: var(--deep-sea); }
+    .current-links a:focus-visible { outline: 2px solid var(--mist); outline-offset: 5px; }
+    .current-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--deep-sea); }
+    .resume-entry { position: relative; z-index: 2; padding: 32px; margin-bottom: 48px; border: 1px solid var(--line-strong); border-top: 3px solid var(--deep-sea); background: rgba(248,250,252,0.9); scroll-margin-top: 100px; }
+    .resume-entry-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    .resume-eyebrow { font-size: 0.7rem; letter-spacing: 0.12em; color: var(--mist); margin-bottom: 10px; }
+    .resume-title { font-family: var(--font-serif); font-size: clamp(1.3rem,2.6vw,2rem); line-height: 1.5; color: var(--ink); font-weight: 600; }
+    .resume-status { flex-shrink: 0; padding: 5px 12px; font-size: 0.7rem; color: var(--ocean); border: 1px solid var(--line-strong); background: var(--foam); }
+    .resume-status-complete { background: var(--deep-sea); color: var(--pearl); }
+    .resume-summary { color: var(--text-soft); font-size: 0.9rem; line-height: 1.9; max-width: 850px; }
+    .resume-process { list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; padding: 24px 0; margin-top: 24px; border-top: 1px solid var(--line-strong); }
+    .resume-process li { min-width: 0; padding-right: 20px; border-right: 1px solid var(--line-strong); }
+    .resume-process li:last-child { padding-right: 0; border-right: none; }
+    .process-index { display: block; font-size: 0.7rem; color: var(--mist); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .resume-process h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; color: var(--deep-sea); }
+    .resume-process p { color: var(--text-soft); font-size: 0.82rem; line-height: 1.9; }
+    .resume-outcome { display: flex; align-items: baseline; gap: 16px; padding-top: 16px; margin-top: 16px; border-top: 1px solid var(--line-strong); font-size: 0.85rem; color: var(--text-soft); line-height: 1.9; }
+    .resume-outcome > span { flex-shrink: 0; font-size: 0.72rem; color: var(--deep-sea); font-weight: 600; }
+    .miniapp-gallery { display: grid; grid-template-columns: minmax(0,1fr) 228px; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line-strong); }
+    .miniapp-gallery-title { font-size: 0.95rem; font-weight: 600; color: var(--deep-sea); margin-bottom: 18px; }
+    .miniapp-screens { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+    .miniapp-screen { min-width: 0; }
+    .miniapp-screen > a { display: flex; justify-content: center; align-items: center; height: 390px; padding: 12px; background: var(--foam); border: 1px solid var(--line); }
+    .miniapp-screen img { display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+    .miniapp-screen figcaption, .miniapp-record figcaption { margin-top: 10px; font-size: 0.76rem; color: var(--text-soft); line-height: 1.8; }
+    .miniapp-qr { min-width: 0; align-self: start; padding: 20px; text-align: center; border: 1px solid var(--line-strong); background: white; }
+    .miniapp-qr > a { display: block; }
+    .miniapp-qr img { display: block; width: 100%; height: auto; max-width: 258px; margin: 0 auto; }
+    .miniapp-qr figcaption { margin-top: 16px; font-size: 0.85rem; color: var(--deep-sea); font-weight: 600; }
+    .miniapp-qr p { margin-top: 6px; color: var(--text-soft); font-size: 0.75rem; line-height: 1.8; }
+    .miniapp-records { margin-top: 28px; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+    .miniapp-records summary { padding: 16px 4px; cursor: pointer; color: var(--deep-sea); font-size: 0.85rem; font-weight: 600; }
+    .miniapp-records summary:focus-visible, .miniapp-gallery a:focus-visible, .miniapp-record a:focus-visible { outline: 2px solid var(--mist); outline-offset: 4px; }
+    .miniapp-record-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; padding: 8px 0 24px; }
+    .miniapp-record { min-width: 0; }
+    .miniapp-record a { display: block; }
+    .miniapp-record img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+    .miniapp-record-wide { grid-row: span 2; }
+    .rst-demo { margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--line-strong); }
+    .rst-demo-title { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+    .rst-demo-title h4 { font-size: 0.95rem; font-weight: 600; color: var(--deep-sea); }
+    .rst-demo-title span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--mist); }
+    .rst-video { display: block; width: 100%; height: auto; aspect-ratio: 146 / 83; object-fit: contain; background: var(--deep-sea); border: 1px solid var(--line-strong); }
+    .rst-demo figcaption { margin-top: 12px; color: var(--text-soft); font-size: 0.8rem; line-height: 1.8; }
+    .rst-video-link { display: inline-block; margin-top: 10px; font-size: 0.76rem; color: var(--deep-sea); text-underline-offset: 4px; }
+    .rst-video:focus-visible, .rst-video-link:focus-visible { outline: 2px solid var(--mist); outline-offset: 4px; }
+    /* 科研与产品开发：深蓝细线的纵向时间轴。 */
+    #research-experience { scroll-margin-top: 80px; }
+    .research-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--line-strong); margin-bottom: 28px; }
+    .research-kicker { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--mist); margin-bottom: 12px; }
+    .research-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 16px; font-family: var(--font-serif); font-size: clamp(2rem,5vw,4rem); font-weight: 600; line-height: 1.2; color: var(--ink); letter-spacing: -0.03em; }
+    .research-heading span { font-family: var(--font-sans); font-size: 0.74rem; font-weight: 400; letter-spacing: 0.14em; color: var(--text-mute); }
+    .research-intro { max-width: 850px; color: var(--text-soft); font-size: 0.92rem; line-height: 2; margin-bottom: 40px; }
+    .journey-list { position: relative; list-style: none; margin-top: 36px; }
+    .journey-list::before { content: ''; position: absolute; left: 176px; top: 10px; bottom: 40px; width: 1px; background: var(--line-strong); }
+    .journey-step { position: relative; display: grid; grid-template-columns: 150px minmax(0,1fr); gap: 64px; padding-bottom: 42px; }
+    .journey-step:last-child { padding-bottom: 0; }
+    .journey-node { position: absolute; left: 171px; top: 7px; width: 11px; height: 11px; border: 2px solid var(--mist); border-radius: 50%; background: var(--pearl); box-shadow: 0 0 0 5px var(--pearl); }
+    .journey-step-current .journey-node { background: var(--deep-sea); border-color: var(--deep-sea); }
+    .journey-step-planned .journey-node { border-style: dashed; }
+    .journey-meta { text-align: right; padding-top: 2px; color: var(--mist); font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.8; }
+    .journey-meta time, .journey-meta > span:first-child { display: block; }
+    .journey-meta .journey-state { display: block; margin-top: 8px; color: var(--text-mute); font-family: var(--font-sans); font-size: 0.7rem; }
+    .journey-body { min-width: 0; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+    .journey-step:last-child .journey-body { border-bottom: none; padding-bottom: 0; }
+    .journey-body h3 { font-family: var(--font-serif); font-size: clamp(1.3rem,2.3vw,1.8rem); font-weight: 600; line-height: 1.6; color: var(--deep-sea); margin-bottom: 14px; }
+    .journey-body h4 { font-size: 0.86rem; font-weight: 600; color: var(--deep-sea); margin-bottom: 8px; }
+    .journey-body p { font-size: 0.88rem; line-height: 2; color: var(--text-soft); }
+    .journey-body p + p { margin-top: 14px; }
+    .journey-body .journey-en { font-family: var(--font-mono); font-size: 0.72rem; color: var(--mist); margin-top: -6px; margin-bottom: 16px; }
+    .journey-body a:focus-visible { outline: 2px solid var(--mist); outline-offset: 4px; }
+    .research-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .research-tags .tag { font-size: 0.68rem; padding: 5px 11px; max-width: 100%; overflow-wrap: anywhere; }
+    .research-tags .tag:hover { transform: none; box-shadow: none; }
+    .research-context { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 24px; margin-top: 22px; }
+    .research-context dt { color: var(--mist); font-size: 0.7rem; margin-bottom: 8px; }
+    .research-context dd { color: var(--text-soft); font-size: 0.85rem; line-height: 2; }
+    .research-context dd strong { color: var(--deep-sea); font-weight: 500; }
+    .journey-body .research-cross { margin-top: 20px; font-size: 0.82rem; }
+    .paper-reading-layout { display: grid; grid-template-columns: minmax(0,1fr) 300px; gap: 32px; align-items: start; }
+    .research-paper { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--line-strong); }
+    .research-paper cite { display: block; font-style: normal; color: var(--deep-sea); font-size: 0.85rem; line-height: 1.8; }
+    .research-paper span { display: block; margin-top: 6px; font-size: 0.7rem; color: var(--mist); }
+    .research-paper-figure { margin: 0; min-width: 0; max-width: 440px; }
+    .research-paper-image { display: block; padding: 14px 10px; background: white; border: 1px solid var(--line-strong); }
+    .research-paper-image:hover { border-color: var(--mist); }
+    .research-paper-image img { display: block; width: 100%; height: auto; }
+    .research-paper-figure figcaption { margin-top: 10px; color: var(--text-soft); font-size: 0.75rem; line-height: 1.8; }
+    .research-paper-figure figcaption strong { display: block; font-size: 0.8rem; color: var(--deep-sea); font-weight: 500; margin-bottom: 4px; }
+    .research-paper-figure figcaption span { display: block; margin-top: 5px; color: var(--mist); font-size: 0.68rem; }
+    .project-story { scroll-margin-top: 100px; padding-bottom: 32px; margin-bottom: 56px; border-bottom: 1px solid var(--line-strong); }
+    .project-story .resume-title { font-size: clamp(1.5rem,3vw,2.3rem); }
+    .journey-product-screens { max-width: 620px; margin-top: 24px; }
+    .journey-product-screens .miniapp-screen > a { height: 320px; }
+    .journey-record { margin-top: 22px; max-width: 720px; }
+    .journey-record img { display: block; width: 100%; height: auto; border: 1px solid var(--line-strong); }
+    .journey-record figcaption { margin-top: 10px; font-size: 0.75rem; color: var(--text-soft); line-height: 1.8; }
+    .journey-development { max-width: 620px; margin-top: 16px; padding-bottom: 22px; }
+    .journey-launch { display: grid; grid-template-columns: minmax(0,1fr) 220px; gap: 32px; align-items: start; }
+    .journey-launch .miniapp-qr { width: 220px; max-width: 100%; }
+    .education-previous { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line-strong); }
+    .education-previous summary { cursor: pointer; color: var(--deep-sea); padding: 8px 0; font-size: 0.92rem; line-height: 1.8; }
+    .education-previous-meta { font-family: var(--font-mono); color: var(--text-mute); font-size: 0.72rem; margin-left: 18px; }
+    .education-previous p { max-width: 850px; font-size: 0.84rem; line-height: 2; color: var(--text-soft); padding: 12px 0 4px 18px; }
+    .education-previous summary:focus-visible { outline: 2px solid var(--mist); outline-offset: 4px; }
+    @media (max-width: 980px) {
+        .paper-reading-layout, .journey-launch { grid-template-columns: 1fr; }
+        .journey-launch .miniapp-qr { justify-self: start; }
+    }
+    @media (max-width: 760px) {
+        .journey-list::before { left: 5px; }
+        .journey-step { grid-template-columns: 1fr; gap: 12px; padding-left: 28px; padding-bottom: 32px; }
+        .journey-node { left: 0; }
+        .journey-meta { text-align: left; }
+        .journey-meta .journey-state { display: inline; margin-left: 12px; }
+        .journey-meta time, .journey-meta > span:first-child { display: inline; }
+        .journey-body { padding-bottom: 24px; }
+        .research-context { grid-template-columns: 1fr; gap: 20px; }
+        .journey-product-screens .miniapp-screen > a { height: 260px; }
+        .journey-launch .miniapp-qr { width: 228px; justify-self: center; }
+        .education-previous-meta { display: block; margin: 4px 0 0 18px; }
+    }
+    @media (max-width: 800px) {
+        .resume-entry { padding: 24px 20px; }
+        .resume-entry-head { flex-direction: column; gap: 12px; }
+        .resume-process { grid-template-columns: 1fr; gap: 20px; padding-bottom: 4px; }
+        .resume-process li { border-right: none; padding: 0 0 20px; border-bottom: 1px solid var(--line); }
+        .resume-process li:last-child { border-bottom: none; padding-bottom: 0; }
+        .process-index { margin-bottom: 6px; }
+        .resume-outcome { flex-direction: column; gap: 5px; }
+        .miniapp-gallery { grid-template-columns: 1fr; gap: 24px; }
+        .miniapp-screens { gap: 12px; }
+        .miniapp-screen > a { height: 300px; padding: 8px; }
+        .miniapp-qr { width: 228px; max-width: 100%; justify-self: center; }
+        .miniapp-record-grid { grid-template-columns: 1fr; }
+        .miniapp-record-wide { grid-row: auto; }
+    }
 </style>
 </head>
 <body>
-
 <nav class="nav">
     <div class="nav-brand">baoxianyu</div>
     <div style="display:flex; align-items:center; gap:12px;">
@@ -3043,7 +3183,8 @@
         <a href="#about">概览</a>
         <a href="#stats">数据</a>
         <a href="#pers">性格</a>
-        <a href="#exp">经历</a>
+        <a href="#research-experience">科研</a>
+        <a href="#exp">项目</a>
         <a href="#edu">教育</a>
         <a href="#cert">证书</a>
         <a href="#skills">技能</a>
@@ -3061,9 +3202,9 @@
     <div class="hero-content">
         <div class="hero-text">
             <div class="hero-label anim" id="a1">portfolio · 2026</div>
-            <div class="hero-identity anim" id="a2">西南财经大学 <span class="hero-identity-period">· 计算机类准大一新生</span></div>
-            <h1 class="hero-title anim" id="a3">鲍宪宇<span class="hero-title-role">AI 训练师 · PPT 设计专家</span></h1>
-            <p class="hero-sub anim" id="a4">阿里云认证高级 AI 训练师 · AI 应用实践者。专注于大模型微调、提示词工程与信息可视化的交叉领域。</p>
+            <div class="hero-identity anim" id="a2">西南财经大学 <span class="hero-identity-period">· 2026 级计算机类本科生</span></div>
+            <h1 class="hero-title anim" id="a3">鲍宪宇<span class="hero-title-role">AI 应用实践 · 独立开发</span></h1>
+            <p class="hero-sub anim" id="a4">阿里云认证高级 AI 训练师。独立完成微信小程序开发、备案与上线；科研方向为可信人工智能，正在精读证据深度学习论文，计划基于 PyTorch 复现，并准备 RST 竞赛。</p>
             <div class="hero-contact anim" id="a5">
                 <div class="hero-email">
                     <span class="hero-email-icon">✉</span>
@@ -3073,11 +3214,16 @@
             </div>
             <div class="hero-tags anim" id="a6">
                 <span class="tag">AI 训练</span>
-                <span class="tag">PPT 可视化</span>
+                <span class="tag">小程序开发</span>
                 <span class="tag">Python</span>
-                <span class="tag">音乐制作</span>
+                <span class="tag">信息可视化</span>
             </div>
-            <a href="#cert" class="hero-cta anim" id="a7">查看证书 <span class="hero-cta-arrow">→</span></a>
+            <a href="#miniapp-project" class="hero-cta anim" id="a7">查看项目经历 <span class="hero-cta-arrow">→</span></a>
+            <div class="current-links" aria-label="近期进展">
+                <a href="#miniapp-project"><span class="current-dot" aria-hidden="true"></span>小程序已上线 <span aria-hidden="true">↗</span></a>
+                <a href="#research-experience">科研学习进行中 <span aria-hidden="true">↗</span></a>
+                <a href="#rst-project">RST 竞赛备赛中 <span aria-hidden="true">↗</span></a>
+            </div>
         </div>
         <div class="hero-visual anim-right" id="visualBlock">
             <div class="visual-frame" id="visualFrame">
@@ -3153,46 +3299,176 @@
     </div>
 </section>
 
+<!-- 科研经历 -->
+<section class="section" id="research-experience" aria-labelledby="research-title">
+    <div class="research-header">
+        <div>
+            <div class="research-kicker">— 科研训练进行时 / 2026</div>
+            <h2 class="research-heading" id="research-title">科研经历 <span>/ RESEARCH</span></h2>
+        </div>
+        <span class="resume-status">科研训练进行中</span>
+    </div>
+    <p class="research-intro">西南财经大学计算机与人工智能学院 2026 级本科生。从确定可信人工智能方向，到经导师允许参加组会、精读证据深度学习论文，逐步开展科研训练。</p>
+    <ol class="journey-list" aria-label="科研训练时间轴">
+        <li class="journey-step">
+            <span class="journey-node" aria-hidden="true"></span>
+            <div class="journey-meta"><time datetime="2026-09">2026.09</time><span class="journey-state">确定研究方向</span></div>
+            <div class="journey-body">
+                <h3 id="research-direction-title">可信人工智能</h3>
+                <p class="journey-en">Trustworthy AI</p>
+                <p>与导师面谈，确定可信人工智能方向。让 AI 不仅“答得准”，还能诚实地表达“我有多确定”：聚焦不确定性量化，关注分布外检测与对抗鲁棒性在高风险决策场景中的应用价值。</p>
+                <div class="research-tags"><span class="tag">Trustworthy AI</span><span class="tag">Uncertainty Quantification</span><span class="tag">OOD Detection</span><span class="tag">Adversarial Robustness</span></div>
+            </div>
+        </li>
+        <li class="journey-step journey-step-current">
+            <span class="journey-node" aria-hidden="true"></span>
+            <div class="journey-meta"><time datetime="2026-10">2026.10 — 至今</time><span class="journey-state">组会与科研训练</span></div>
+            <div class="journey-body">
+                <h3 id="research-group-title">组会交流与科研方法训练</h3>
+                <p>经施龙老师允许，定期参加课题组组会，跟随研究生一同接受科研训练。练习三遍读论文法与结构化科研笔记，逐步形成可向导师汇报的问题清单。</p>
+                <dl class="research-context">
+                    <div><dt>实验室交流平台</dt><dd><strong>金融智能与金融工程四川省重点实验室</strong><br>西南财经大学</dd></div>
+                    <div><dt>指导教师</dt><dd><strong>施龙老师</strong><br>研究方向：可信人工智能、多模态与多视图学习、大模型轻量化、联邦学习。</dd></div>
+                </dl>
+                <p class="research-cross">人工智能 × 金融的交叉平台：关注不确定性量化在金融等高风险决策场景中的应用价值。</p>
+            </div>
+        </li>
+        <li class="journey-step journey-step-current">
+            <span class="journey-node" aria-hidden="true"></span>
+            <div class="journey-meta"><time datetime="2026-10">2026.10 — 至今</time><span class="journey-state">论文精读 · 进行中</span></div>
+            <div class="journey-body">
+                <h3 id="research-topic-title">证据深度学习：论文精读</h3>
+                <div class="paper-reading-layout">
+                    <div>
+                        <div class="research-paper"><cite>Evidential Deep Learning to Quantify Classification Uncertainty</cite><span>Sensoy et al. · NeurIPS 2018</span></div>
+                        <p>逐节阅读论文，围绕研究问题、核心思想、方法步骤、关键公式、实验结论与疑问整理笔记，学习用 Dirichlet 分布建模预测不确定性的核心思想。</p>
+                        <p>当前阅读关注点：理解损失函数中预测误差项与预测方差项的分解，为后续代码复现打下基础。</p>
+                    </div>
+                    <figure class="research-paper-figure">
+                        <a class="research-paper-image" href="assets/research/edl-loss-paper.png" target="_blank" rel="noopener" aria-label="查看 EDL 论文损失函数推导的完整截图"><img src="assets/research/edl-loss-detail.webp" alt="EDL 论文原文中的损失函数分解，包含预测误差项与预测方差项" width="605" height="320" loading="lazy" decoding="async"></a>
+                        <figcaption><strong>关键公式精读</strong>论文原文节选 · Sensoy et al., NeurIPS 2018<span>点击查看完整截图 ↗</span></figcaption>
+                    </figure>
+                </div>
+                <div class="research-tags"><span class="tag">Evidential Deep Learning</span><span class="tag">NeurIPS 2018</span><span class="tag">Paper Reading</span></div>
+            </div>
+        </li>
+        <li class="journey-step journey-step-planned">
+            <span class="journey-node" aria-hidden="true"></span>
+            <div class="journey-meta"><span>下一阶段</span><span class="journey-state">代码复现 · 计划中</span></div>
+            <div class="journey-body">
+                <h3>PyTorch 复现与深度学习基础</h3>
+                <p>计划基于 PyTorch 从零复现论文实验，涵盖 ReLU 证据输出层、MSE 风险损失与 KL 正则，以及 MNIST 旋转实验和 OOD 检测可视化。在复现过程中夯实深度学习基础，逐步建立从论文方法到代码实现的理解。</p>
+                <div class="research-tags"><span class="tag">PyTorch · 计划复现</span><span class="tag">MNIST</span><span class="tag">OOD Detection</span></div>
+            </div>
+        </li>
+    </ol>
+</section>
+
 <!-- 经历 -->
 <section class="section" id="exp">
     <div class="exp-deco-ring"></div>
     <div class="exp-header-wrap">
         <div class="exp-title-block">
             <div class="exp-title-num">— 002</div>
-            <h2 class="exp-title-main">经历 <span class="exp-title-en">/ experience</span></h2>
+            <h2 class="exp-title-main">项目实践 <span class="exp-title-en">/ projects</span></h2>
         </div>
-        <div class="exp-header-meta">— 2023 — 2026</div>
+        <div class="exp-header-meta">独立开发 · 竞赛实践</div>
     </div>
 
-    <div class="exp-body">
-        <!-- 左时间栏 -->
-        <div class="exp-meta-col exp-anim-left exp-anim-meta">
-            <div class="exp-period">2023.09 — 2026.06</div>
-            <div class="exp-place">深圳科学高中</div>
+    <article class="project-story" id="miniapp-project" aria-labelledby="miniapp-title">
+        <div class="resume-entry-head">
+            <div>
+                <div class="resume-eyebrow">个人项目 / 独立开发</div>
+                <h3 class="resume-title" id="miniapp-title">学习计划与专注计时小程序</h3>
+            </div>
+            <span class="resume-status resume-status-complete">已发布上线</span>
         </div>
-        <!-- 右内容栏 -->
-        <div class="exp-content-col">
-            <h3 class="exp-title exp-anim exp-anim-title">电教管理员 &amp; 生物课代表</h3>
-            <ul class="exp-list" id="expList">
-                <li class="exp-anim exp-li-1">
-                    <span>参与 AI 与教育内容的探索，整理生物学习资料，并尝试使用 AI 辅助学习和内容创作。</span>
-                </li>
-                <li class="exp-anim exp-li-2">
-                    <span>负责校园多媒体设备的日常维护，及时处理课堂和活动中的设备问题。</span>
-                </li>
-                <li class="exp-anim exp-li-3">
-                    <span>协助优化班级作业流程，关注同学的使用体验和实际反馈。</span>
-                </li>
-                <li class="exp-anim exp-li-4">
-                    <span>参与开学典礼、百日誓师等校园活动的 PPT 制作与现场支持。</span>
-                </li>
-            </ul>
+        <p class="resume-summary">面向日常学习场景，开发集学习任务规划、专注计时与白噪音选项于一体的微信小程序。代码开发、线上备案、版本审核提交与正式发布均由本人完成。</p>
+        <div class="proj-tags"><span class="tag">微信小程序</span><span class="tag">JavaScript</span><span class="tag">独立开发</span><span class="tag">产品上线</span></div>
+        <ol class="journey-list" aria-label="小程序开发与上线时间轴">
+            <li class="journey-step">
+                <span class="journey-node" aria-hidden="true"></span>
+                <div class="journey-meta"><span>开发阶段</span><span class="journey-state">功能实现 · 已完成</span></div>
+                <div class="journey-body">
+                    <h3>代码开发与功能实现</h3>
+                    <p>使用微信开发者工具与 JavaScript，独立实现学习任务规划、专注计时与白噪音选项，将日常学习安排转化为可操作的小程序界面。</p>
+                    <div class="journey-product-screens">
+                        <h4 class="miniapp-gallery-title">产品界面</h4>
+                        <div class="miniapp-screens">
+                            <figure class="miniapp-screen"><a href="assets/miniapp/study-plan.webp" target="_blank" rel="noopener" aria-label="查看学习计划界面大图"><img src="assets/miniapp/study-plan.webp" alt="小程序学习计划页面，展示学习任务、计划日期与预计时长" width="1240" height="2772" loading="lazy" decoding="async"></a><figcaption>学习计划 · 按任务安排学习时间</figcaption></figure>
+                            <figure class="miniapp-screen"><a href="assets/miniapp/focus-timer.webp" target="_blank" rel="noopener" aria-label="查看专注计时界面大图"><img src="assets/miniapp/focus-timer.webp" alt="小程序专注计时页面，展示倒计时、亮屏专注提示和白噪音选项" width="535" height="1152" loading="lazy" decoding="async"></a><figcaption>专注计时 · 倒计时与白噪音选项</figcaption></figure>
+                        </div>
+                    </div>
+                    <details class="miniapp-records"><summary>查看代码开发截图</summary><figure class="miniapp-record journey-development"><a href="assets/miniapp/development-original.png" target="_blank" rel="noopener" aria-label="查看完整微信开发者工具截图"><img src="assets/miniapp/development-code.webp" alt="微信开发者工具中的 JavaScript 学习计划代码" width="1191" height="841" loading="lazy" decoding="async"></a><figcaption>学习计划模块实现 · 点击查看包含模拟器的完整开发截图。</figcaption></figure></details>
+                </div>
+            </li>
+            <li class="journey-step">
+                <span class="journey-node" aria-hidden="true"></span>
+                <div class="journey-meta"><span>备案阶段</span><span class="journey-state">线上备案 · 已完成</span></div>
+                <div class="journey-body"><h3>独立完成线上备案</h3><p>独立办理微信小程序线上备案，完成发布所需的备案环节，将开发工作推进到上线准备阶段。</p></div>
+            </li>
+            <li class="journey-step">
+                <span class="journey-node" aria-hidden="true"></span>
+                <div class="journey-meta"><time datetime="2026-09-19">2026.09.19</time><span class="journey-state">提交审核 · 已通过</span></div>
+                <div class="journey-body">
+                    <h3>1.0 版本提交与审核通过</h3><p>于 2026 年 9 月 19 日提交 1.0 版本审核，后续审核通过，完成正式发布前的平台审核环节。</p>
+                    <figure class="journey-record"><a href="assets/miniapp/review-passed.webp" target="_blank" rel="noopener" aria-label="查看版本审核记录大图"><img src="assets/miniapp/review-passed.webp" alt="微信后台 1.0 版本审核记录，状态为审核通过待发布" width="1158" height="299" loading="lazy" decoding="async"></a><figcaption>历史审核截图 · 记录的是“审核通过待发布”阶段。</figcaption></figure>
+                    <details class="miniapp-records"><summary>查看后台版本管理记录</summary><figure class="miniapp-record journey-development"><a href="assets/miniapp/version-management.webp" target="_blank" rel="noopener" aria-label="查看版本管理后台大图"><img src="assets/miniapp/version-management.webp" alt="微信小程序后台的审核版本管理页面" width="1249" height="484" loading="lazy" decoding="async"></a><figcaption>微信后台审核版本页面记录。</figcaption></figure></details>
+                </div>
+            </li>
+            <li class="journey-step journey-step-current">
+                <span class="journey-node" aria-hidden="true"></span>
+                <div class="journey-meta"><span>正式上线</span><span class="journey-state">发布完成</span></div>
+                <div class="journey-body">
+                    <h3>正式发布与扫码体验</h3>
+                    <div class="journey-launch">
+                        <div><p>独立完成发布操作，小程序已正式上线微信平台。从功能开发、备案到审核提交与发布，完成一款学习工具的完整上线流程。</p><p>可使用微信扫一扫体验学习计划与专注计时功能。</p></div>
+                        <figure class="miniapp-qr"><a href="assets/miniapp/wechat-code.jpg" target="_blank" rel="noopener" aria-label="打开微信小程序码大图"><img src="assets/miniapp/wechat-code.jpg" alt="学习计划与专注计时小程序的微信小程序码" width="258" height="258" loading="lazy" decoding="async"></a><figcaption>微信扫码体验</figcaption><p>手机浏览时，可打开大图并保存后，在微信扫一扫中从相册选择。</p></figure>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </article>
+
+    <article class="resume-entry" id="rst-project" aria-labelledby="rst-title">
+        <div class="resume-entry-head">
+            <div>
+                <div class="resume-eyebrow">竞赛实践 / RST</div>
+                <h3 class="resume-title" id="rst-title">水中机器鱼仿真与控制调试</h3>
+            </div>
+            <span class="resume-status">备赛进行中</span>
         </div>
-    </div>
-
-    <hr class="exp-divider" />
-
-    <div class="exp-subhead proj-anim proj-anim-subhead">项目实践 <span class="exp-subhead-en">/ projects</span></div>
+        <p class="resume-summary">面向 RST 竞赛，在 FishSim 仿真环境中开展水中机器鱼运动控制代码开发与调试。围绕路径跟踪、运行状态记录与高度边界处理，通过仿真运行观察控制效果，持续推进参赛准备。</p>
+        <ol class="resume-process">
+            <li><span class="process-index">01 / 开发实践</span><h4>控制代码开发</h4><p>使用 Python 编写和调整控制逻辑，处理路径目标与机器鱼推力参数。</p></li>
+            <li><span class="process-index">02 / 调试实践</span><h4>状态与边界处理</h4><p>记录路径目标与位置状态，补充高度边界处的推力调整逻辑。</p></li>
+            <li><span class="process-index">03 / 仿真验证</span><h4>运行观察与迭代</h4><p>运行仿真观察机器鱼的运动过程，结合运行结果继续调试。</p></li>
+        </ol>
+        <p class="resume-outcome"><span>当前阶段</span>已形成控制代码与仿真运行演示，竞赛备赛和调试仍在进行。</p>
+        <div class="proj-tags"><span class="tag">RST 竞赛</span><span class="tag">Python</span><span class="tag">路径跟踪</span><span class="tag">运动控制</span><span class="tag">仿真调试</span></div>
+        <figure class="rst-demo">
+            <div class="rst-demo-title"><h4>仿真运行演示</h4><span>00:20 / 阶段演示</span></div>
+            <video class="rst-video" controls playsinline preload="metadata" poster="assets/rst/simulation-poster.jpg" aria-label="RST 水中机器鱼仿真运行演示，前 20 秒节选">
+                <source src="assets/rst/simulation-20s.mp4" type="video/mp4">
+                <p>可<a href="assets/rst/simulation-20s.mp4">打开演示视频</a>查看仿真运行过程。</p>
+            </video>
+            <figcaption>原始演示的前 20 秒，展示机器鱼在水下障碍场景中的仿真运动过程。</figcaption>
+            <a href="assets/rst/simulation-20s.mp4" target="_blank" rel="noopener" class="rst-video-link">单独打开演示视频 ↗</a>
+        </figure>
+        <details class="miniapp-records">
+            <summary>查看竞赛项目开发截图</summary>
+            <div class="miniapp-record-grid">
+                <figure class="miniapp-record">
+                    <a href="assets/rst/control-development.webp" target="_blank" rel="noopener" aria-label="查看机器鱼控制代码截图大图"><img src="assets/rst/control-development.webp" alt="Python 机器鱼控制代码，展示位置状态标记与高度边界推力调整" width="1814" height="1216" loading="lazy" decoding="async"></a>
+                    <figcaption>控制逻辑 · 运行位置状态记录与高度边界处的推力处理。</figcaption>
+                </figure>
+                <figure class="miniapp-record">
+                    <a href="assets/rst/simulation-debugging.webp" target="_blank" rel="noopener" aria-label="查看仿真调试代码截图大图"><img src="assets/rst/simulation-debugging.webp" alt="Python 仿真调试截图，展示路径目标状态与位置标记逻辑" width="1760" height="1227" loading="lazy" decoding="async"></a>
+                    <figcaption>仿真调试 · 路径目标状态与控制代码检查。</figcaption>
+                </figure>
+            </div>
+        </details>
+    </article>
 
     <!-- 项目 01 -->
     <div class="proj-body">
@@ -3264,27 +3540,6 @@
                         <img src="project-2.png" alt="AI + 教育内容创作案例截图" loading="lazy" decoding="async" />
                     </span>
                 </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 项目 03 -->
-    <div class="proj-body">
-        <div class="proj-meta-col proj-anim-left proj-anim-meta-3">
-            <div class="exp-period">2023.09 — 2026.06</div>
-            <div class="exp-place">校园视觉</div>
-        </div>
-        <div class="proj-content-col">
-            <h3 class="exp-title proj-anim proj-anim-title-3">校园活动视觉设计</h3>
-            <ul class="exp-list">
-                <li class="proj-anim proj-li-3-1"><span>参与校园活动 PPT 设计，并负责部分现场视觉支持</span></li>
-                <li class="proj-anim proj-li-3-2"><span>负责多媒体设备维护，及时处理课堂中的设备问题</span></li>
-                <li class="proj-anim proj-li-3-3"><span>协助优化作业流程，并根据实际反馈持续调整</span></li>
-            </ul>
-            <div class="proj-tags proj-anim proj-li-3-4">
-                <span class="tag">PPT 设计</span>
-                <span class="tag">设备运维</span>
-                <span class="tag">流程优化</span>
             </div>
         </div>
     </div>
@@ -3394,6 +3649,10 @@
             </div>
         </div>
     </div>
+    <details class="education-previous" id="school-history">
+        <summary>深圳科学高中<span class="education-previous-meta">2023.09 — 2026.06 · 高中阶段</span></summary>
+        <p>担任电教管理员与生物课代表，参与学习资料整理、多媒体设备维护、作业流程优化，以及校园活动 PPT 制作与现场支持。</p>
+    </details>
 </section>
 
 <!-- 证书 · 螺旋展柜 + 编辑式信息面板 -->
@@ -4153,7 +4412,7 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.01 });
     revealEls.forEach(el => observer.observe(el));
 
     renderCerts();
@@ -4503,57 +4762,29 @@
         document.querySelectorAll('.anim, .anim-right, .anim-fade').forEach(el => el.classList.add('in'));
     }
 
-    // ============ 经历页 - 编辑式数据排版 ============
-    if (!prefersReduced) {
-        const expObs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // 左侧时间栏滑入
-                    setTimeout(() => document.querySelector('.exp-anim-meta')?.classList.add('in'), 50);
-                    // 右侧标题下滑入
-                    setTimeout(() => document.querySelector('.exp-anim-title')?.classList.add('in'), 150);
-                    // 列表项 stagger 入场
-                    ['exp-li-1','exp-li-2','exp-li-3','exp-li-4'].forEach(cls => {
-                        const idx = parseInt(cls.split('-')[2]);
-                        const li = document.querySelector('.' + cls);
-                        if (!li) return;
-                        setTimeout(() => li.classList.add('in'), 250 + (idx - 1) * 120);
-                    });
-                    expObs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.2 });
-        const expSec = document.getElementById('exp');
-        if (expSec) expObs.observe(expSec);
-    } else {
-        // reduced motion：直接显示
-        document.querySelectorAll('.exp-anim, .exp-anim-left').forEach(el => el.classList.add('in'));
+    if (prefersReduced) {
         document.querySelectorAll('.proj-anim, .proj-anim-left').forEach(el => el.classList.add('in'));
     }
 
     // ============ 项目实践 - stagger 入场（新增，不影响现有逻辑） ============
     (function initProjEnter() {
         if (prefersReduced) return; // reduced motion 已在上方处理
-        const projSubhead = document.querySelector('.proj-anim-subhead');
-        if (!projSubhead) return;
+        const projSection = document.getElementById('exp');
+        if (!projSection) return;
         const projObs = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                // 子标题
-                setTimeout(() => projSubhead.classList.add('in'), 50);
-                // 四个项目 stagger
-                for (let i = 1; i <= 4; i++) {
-                    const base = 150 + (i - 1) * 120;
-                    setTimeout(() => document.querySelector('.proj-anim-meta-' + i)?.classList.add('in'), base);
-                    setTimeout(() => document.querySelector('.proj-anim-title-' + i)?.classList.add('in'), base + 60);
-                    ['1','2','3','4','5','6'].forEach((s, j) => {
-                        setTimeout(() => document.querySelector('.proj-li-' + i + '-' + s)?.classList.add('in'), base + 120 + j * 90);
-                    });
-                }
+                // 按项目进入视口时显示，避免新增经历后整段高度影响触发。
+                const elements = entry.target.matches('.proj-anim-subhead')
+                    ? [entry.target]
+                    : [...entry.target.querySelectorAll('.proj-anim, .proj-anim-left')];
+                elements.forEach((el, index) => {
+                    setTimeout(() => el.classList.add('in'), 50 + index * 70);
+                });
                 projObs.unobserve(entry.target);
             });
         }, { threshold: 0.15 });
-        projObs.observe(document.getElementById('exp'));
+        projSection.querySelectorAll('.proj-body, .proj-anim-subhead').forEach(el => projObs.observe(el));
     })();
 
     /* ============================================================
